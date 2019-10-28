@@ -124,6 +124,7 @@ L0['g'] /= L0c
 cpc = cp['g'][0]
 cp['g'] /= cpc
 
+# this is actually a frequency normalization!
 T_norm = np.sqrt(P0c/rho0c)/R_star
 logger.info(T_norm)
 prefactor = 1/T0c/np.sqrt(P0c*rho0c)/cpc*L0c/R_star**2
@@ -140,16 +141,6 @@ dp0dr_over_rho['g'] = dlogpdlogr['g']/r_d*P0['g']/rho0['g']
 
 dT0dr = domain.new_field()
 dT0dr['g'] = dlogTdlogr['g']/r_d*T0['g']
-
-def filter_field(field, filter_index=30):
-  field['c'][filter_index:2*N] = 0
-  field['c'][filter_index+2*N:3*N] = 0
-  field['c'][filter_index+3*N:] = 0
-
-#filter_field(dT0dr)
-#filter_field(dlogrho0dr)
-#filter_field(dp0dr_over_rho)
-#filter_field(cs2)
 
 #f_list = np.array([2e-7,4e-7,1e-6,2e-6,4e-6,1e-5])
 f_list = [1.20e-6]
@@ -210,12 +201,9 @@ for f in f_list:
                              " + prefactor*cs2*nuT/rho0/T0/cp/(4*pi*r**2)*( dr(L) + L0/dTdr*ell*(ell+1)/r**2*T ) = 0")
   
   problem.add_bc("left(ur) = sin(om*t)*(1+tanh( (t - t0)/t_ramp ) )/2")
-  #problem.add_bc("left(ur) = 0")
   problem.add_bc("right(ur) = 0")
   problem.add_bc("left(rho - rho0/p0*p/Gamma1) = 0")
   problem.add_bc("right(rho - rho0/p0*p/Gamma1) = 0")
-#  problem.add_bc("left(T) = 0")
-#  problem.add_bc("right(p) = 0")
   
   # Build solver
   solver = problem.build_solver(de.timesteppers.RK443)
