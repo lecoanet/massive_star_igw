@@ -1,0 +1,143 @@
+&constants
+/
+
+&model
+	model_type = 'EVOL'
+	!file = 'spb.mesa'
+	file = '10/LOGS/profile1.data.GYRE'
+	file_format = 'MESA'
+/
+
+&mode
+	l = 4
+	tag = 'l=4'
+/
+
+&mode
+        l = 5
+        tag = 'l=5'
+/
+
+&mode
+        l = 6
+        tag = 'l=6'
+/
+
+&mode
+        l = 7
+        tag = 'l=7'
+/
+
+&mode
+        l = 8
+        tag = 'l=8'
+/
+
+&mode
+        l = 9
+        tag = 'l=9'
+/
+
+&mode
+        l = 10
+        tag = 'l=10'
+/
+
+
+&osc
+	nonadiabatic = .TRUE.
+/
+
+&num
+	diff_scheme = 'COLLOC_GL2' ! MAGNUS_GL2
+/
+
+&scan
+	grid_type = 'INVERSE'
+	freq_min_units = 'UHZ'
+        freq_max_units = 'UHZ'
+	freq_min = 20
+	freq_max = 200
+	n_freq = 500
+	tag_list = 'l=4'
+/
+
+&scan
+        grid_type = 'INVERSE'
+        freq_min_units = 'UHZ'
+        freq_max_units = 'UHZ'
+        freq_min = 20
+        freq_max = 200
+        n_freq = 500
+        tag_list = 'l=5'
+/
+
+&scan
+        grid_type = 'INVERSE'
+        freq_min_units = 'UHZ'
+        freq_max_units = 'UHZ'
+        freq_min = 20
+        freq_max = 200
+        n_freq = 500
+        tag_list = 'l=6'
+/
+
+&scan
+        grid_type = 'INVERSE'
+        freq_min_units = 'UHZ'
+        freq_max_units = 'UHZ'
+        freq_min = 20
+        freq_max = 200
+        n_freq = 500
+        tag_list = 'l=7'
+/
+
+&scan
+        grid_type = 'INVERSE'
+        freq_min_units = 'UHZ'
+        freq_max_units = 'UHZ'
+        freq_min = 20
+        freq_max = 200
+        n_freq = 500
+        tag_list = 'l=8'
+/
+
+&scan
+        grid_type = 'INVERSE'
+        freq_min_units = 'UHZ'
+        freq_max_units = 'UHZ'
+        freq_min = 20
+        freq_max = 200
+        n_freq = 500
+        tag_list = 'l=9'
+/
+
+&scan
+        grid_type = 'INVERSE'
+        freq_min_units = 'UHZ'
+        freq_max_units = 'UHZ'
+        freq_min = 20
+        freq_max = 200
+        n_freq = 500
+        tag_list = 'l=10'
+/
+
+
+&grid
+	n_inner = 5
+	alpha_osc = 20
+	alpha_exp = 4
+/
+
+&ad_output
+/
+
+&nad_output
+	summary_file = '10XC066_ell_large.txt'
+	summary_file_format = 'TXT'
+	summary_item_list = 'j,l,n_p,n_g,eta,omega,freq,x_ref,xi_r_ref,xi_h_ref,H,lag_L_ref'
+	mode_file_format = 'TXT'
+	mode_template = '10XC066_ell_large.%J.txt'
+	mode_item_list = 'j,l,n_pg,n_p,n_g,eta,omega,freq,x,xi_r,xi_h,lag_L,rho'
+	freq_units = 'UHZ'
+/
