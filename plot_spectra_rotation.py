@@ -35,8 +35,8 @@ text_top = [r'$\Omega = 0.3 \, {\rm d}^{-1}$', r'$\Omega = 0.5 \, {\rm d}^{-1}$'
 f = [0.6,1]
 
 for i in range(2):
-  if i == 0: data = np.loadtxt('spectra_new_Om0p3.dat')
-  elif i == 1: data = np.loadtxt('spectra_new_Om0p5.dat')
+  if i == 0: data = np.loadtxt('spectra_Om0p3.dat')
+  elif i == 1: data = np.loadtxt('spectra_Om0p5.dat')
 
   freq = data[0]
   spectrum_R = data[1]

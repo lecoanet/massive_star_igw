@@ -36,7 +36,8 @@ spectrum_LQ1_filter = np.zeros(len(freq_obs)-1)
 spectrum_LQ2_filter = np.zeros(len(freq_obs)-1)
 spectrum_LQ3_filter = np.zeros(len(freq_obs)-1)
 
-Om = 0.5
+Om = 0.3
+#Om = 0.5
 
 for i in range(1,len(freq_obs)-1):
     mask = (freq_obs[i] < 2*Om) & (freq > (freq_obs[i] + freq_obs[i-1])/2) & (freq < (freq_obs[i] + freq_obs[i+1])/2)
@@ -75,5 +76,6 @@ spectrum_R_filter = spectrum_R1_filter + spectrum_R2_filter + spectrum_R3_filter
 spectrum_LQ_filter = spectrum_LQ1_filter + spectrum_LQ2_filter + spectrum_LQ3_filter
 
 data = np.vstack([freq_obs[1:-1],spectrum_R_filter[:-1],spectrum_LQ_filter[:-1]])
-np.savetxt('spectra_new_Om0p5.dat',data)
+np.savetxt('spectra_Om0p3.dat',data)
+#np.savetxt('spectra_Om0p5.dat',data)
 
